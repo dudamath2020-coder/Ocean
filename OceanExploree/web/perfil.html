@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfil - Ocean Explore</title>
+<link rel="stylesheet" href="css/style.css">
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    fetch("VerificarLogin") // Servlet para checar sessão
+        .then(response => response.json())
+        .then(data => {
+            if (data.logado) {
+                window.location.href = "Perfil"; // Vai para Perfil.java
+            } else {
+                document.getElementById("conteudo").innerHTML = `
+                    <h2>Você não está logado!</h2>
+                    <p>Para acessar seu perfil, faça login abaixo:</p>
+                    <a href="login.html"><button>Ir para Login</button></a>
+                `;
+            }
+        })
+        .catch(() => {
+            document.getElementById("conteudo").innerHTML = "<p>Erro ao verificar login.</p>";
+        });
+});
+</script>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <h1 class="logo">🌊 Ocean Explore</h1>
+        <nav>
+            <ul class="main-nav">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="videos.html">Vídeos</a></li>
+                <li><a href="fauna.html">Fauna</a></li>
+                <li><a href="flora.html">Flora</a></li>
+                <li><a href="preservacao.html">Preservação</a></li>
+                <li><a href="ListarCuriosidades">Curiosidades</a></li>
+                <li><a href="perfil.html">Perfil do Usuário</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container" id="conteudo">
+    <!-- Aqui será exibida a mensagem ou redirecionamento -->
+    <p>Verificando login...</p>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2025 Ocean Explore — Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+</body>
+</html>

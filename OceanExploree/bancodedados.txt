@@ -1,0 +1,33 @@
+base: OCEAN
+-- Criação da tabela de usuários
+CREATE TABLE IF NOT EXISTS usuarios (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    data_criacao TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Criação da tabela de curiosidades dos corais
+CREATE TABLE IF NOT EXISTS curiosidades (
+    id SERIAL PRIMARY KEY,
+    titulo VARCHAR(500) NOT NULL,
+    descricao TEXT NOT NULL,
+    imagem_url TEXT,
+    id_usuario INTEGER NOT NULL,
+    data_criacao TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
+-- Visualizar os dados
+SELECT * FROM usuarios;
+SELECT * FROM curiosidades;
+
+-- Caso queira ajustar colunas existentes:
+-- titulo já é VARCHAR(500), imagem_url já é TEXT e descricao já é TEXT, então os ALTERs não são necessários.
+
+-- Se precisar corrigir codificação de dados existentes:
+-- UPDATE curiosidades
+-- SET descricao = convert_from(convert_to(descricao, 'LATIN1'), 'UTF8');
+-- UPDATE curiosidades
+-- SET titulo = convert_from(convert_to(titulo, 'LATIN1'), 'UTF8');

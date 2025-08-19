@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Adicionar Curiosidade</title>
+  <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+<body>
+  <main class="form-container">
+    <form class="form-box" action="AdicionarCuriosidade" method="post">
+      <h2>Adicionar Curiosidade</h2>
+      <label for="titulo">Título</label>
+      <input type="text" id="titulo" name="titulo" required>
+
+      <label for="descricao">Descrição</label>
+      <textarea id="descricao" name="descricao" rows="4" required></textarea>
+
+      <label for="imagem">URL da imagem (opcional)</label>
+      <input type="text" id="imagem" name="imagem">
+
+      <button type="submit">Salvar</button>
+      <p style="text-align:center;margin-top:10px"><a href="ListarCuriosidades">Voltar</a></p>
+    </form>
+  </main>
+</body>
+</html>
